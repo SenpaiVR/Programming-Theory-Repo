@@ -5,27 +5,26 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
     public static GameObject Player;
+    public static GameObject cat;
+    public static GameObject dog;
+
     public Rigidbody playerRB;
     public bool isInAir = false;
-    public float feetDist = 0.01f;
+    [SerializeField] public static float distToGround;
+    public static Collider animalCollider;
 
     private void Awake()
     {
-        Player = gameObject;
+        Player = GameObject.Find("Player");
+        dog = GameObject.Find("Dog");
+        cat = GameObject.Find("Cat");
+
+        ChooseAnimal();
     }
 
-    void Update()
+    private bool isGrounded()
     {
-        Vector3 fwd = transform.TransformDirection(Vector3.down);
-
-        if (Physics.Raycast(transform.position, fwd, feetDist))
-        {
-            isInAir = false;
-        }
-        else
-        {
-            isInAir = true;
-        }
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
 
     public void Move(int speed, int jump)
@@ -36,12 +35,28 @@ public class Animal : MonoBehaviour
         float horizontalMovement = Input.GetAxis("Horizontal");
         Player.transform.Rotate(0, horizontalMovement, 0);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
-            if (!isInAir)
+            playerRB.AddForce(Vector3.up * jump, ForceMode.Impulse);
+        }
+    }
+
+    private void ChooseAnimal()
+    {
+        if(MainManager.Instance != null)
+        {
+            if (MainManager.Instance.isCat)
             {
-                playerRB.AddForce(Vector3.up * jump, ForceMode.Impulse);
+                Destroy(dog);
             }
+            else
+            {
+                Destroy(cat);
+            }
+        }
+        else
+        {
+            Destroy(cat);
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class MainUIManager : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class MainUIManager : MonoBehaviour
 
     public void Play()
     {
-
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void Exit()

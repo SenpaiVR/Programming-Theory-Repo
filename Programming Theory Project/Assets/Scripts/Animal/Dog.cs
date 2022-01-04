@@ -10,7 +10,8 @@ public class Dog : Animal
     // Start is called before the first frame update
     void Start()
     {
-        
+        animalCollider = gameObject.GetComponent<BoxCollider>();
+        distToGround = animalCollider.bounds.extents.y;
     }
 
     // Update is called once per frame
