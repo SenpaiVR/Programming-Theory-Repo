@@ -62,6 +62,7 @@ public class MainUIManager : MonoBehaviour
 
     public void Play()
     {
+        MainManager.Instance._playerName = _playernameInput.text;
         MainManager.Instance.SaveData();
         SceneManager.LoadSceneAsync(1);
     }
