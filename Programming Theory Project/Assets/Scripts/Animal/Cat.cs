@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cat : Animal
 {
 
-    public int speed = 10;
+    public int speed = 5;
     public int jump = 5;
 
     // Start is called before the first frame update

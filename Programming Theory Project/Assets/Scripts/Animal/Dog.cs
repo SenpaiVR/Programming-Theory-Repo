@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dog : Animal
 {
     public int speed = 5;
-    public int jump = 2;
+    public int jump = 3;
 
     // Start is called before the first frame update
     void Start()

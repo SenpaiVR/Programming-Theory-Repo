@@ -41,7 +41,6 @@ public class MainManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.Json", json);
-        Debug.Log(Application.persistentDataPath + "/savefile.Json");
     }
 
     public void LoadData()

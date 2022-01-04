@@ -17,6 +17,18 @@ public class MainUIManager : MonoBehaviour
     void Start()
     {
         MainManager.Instance.LoadData();
+        if (MainManager.Instance.isDog)
+        {
+            changeButtonColors(Color.green, Color.white);
+        }
+        else if(MainManager.Instance.isCat)
+        {
+            changeButtonColors(Color.white, Color.green);
+        }
+        else
+        {
+            changeButtonColors(Color.white, Color.white);
+        }
         _playernameInput.text = MainManager.Instance._playerName;
 
     }
@@ -50,6 +62,7 @@ public class MainUIManager : MonoBehaviour
 
     public void Play()
     {
+        MainManager.Instance.SaveData();
         SceneManager.LoadSceneAsync(1);
     }
 
