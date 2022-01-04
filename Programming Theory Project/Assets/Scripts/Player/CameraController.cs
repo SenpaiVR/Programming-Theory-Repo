@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : PlayerController
+public class CameraController : MonoBehaviour
 {
     public GameObject cameraRoot;
     [SerializeField] private int cameraSmoothSpeed;
